@@ -2,10 +2,13 @@
  * 
  * 
  */
+const stringify = require("stringify-object");
+
 
 module.exports = {
     get(req, res) {
-        console.log("posts.get: ");
+        console.log("posts.get: "+stringify(req, {indent: '  ', singleQuotes: false}));
+        res.end;
     },
     add(req,res){
         console.log("posts.add: ");

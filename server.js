@@ -14,7 +14,7 @@ const stringify = require("stringify-object");
 /*  our code
 */
 const comments = require('./routes/comments.js');
-const posts = require("./routes/posts");
+const posts = require('./routes/posts.js');
 
 /* he in memory data...
 */
@@ -46,7 +46,21 @@ app.get('/', (req, res) => {
         stringify(store, {indent: '  ', singleQuotes: false})
     );
 });
- 
+
+/* our routes
+*/
+app.get('/posts', posts.get);
+app.post('/posts', posts.add);
+app.put('/posts/:postid/', posts.update);
+app.delete('/posts/:postid/',posts.remove);
+
+app.get('/posts/:postid/comments', comments.get);
+app.post('/posts/:postid/comments', comments.add);
+app.put('/posts/:postid/comments/:commentid', posts.update);
+app.delete('/posts/:postid/comments/:commentid/',posts.remove);
+
+*/
+
 /*** */
 
 console.log('we are now listening....');
