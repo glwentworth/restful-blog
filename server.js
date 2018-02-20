@@ -11,12 +11,7 @@ const errorhandler = require('errorhandler');
 const bodyparser = require('body-parser');
 const stringify = require("stringify-object");
 
-/*  our code
-*/
-const comments = require('./routes/comments.js');
-const posts = require('./routes/posts.js');
-
-/* he in memory data...
+/* the in memory data...
 */
 
 let store = {
@@ -31,6 +26,12 @@ let store = {
         ]
     }]
 }
+
+/*  our code
+*/
+const comments = require('./routes/comments.js');
+const posts = require('./routes/posts.js');
+
 /* 
 /* create and setup the express app
 */
@@ -40,9 +41,16 @@ app.use(bodyparser.json());
 app.use(logger('dev'));
 app.use(errorhandler());
 
+/**make the data store available to route process modules
+ * 
+ */
+app.set('store', store);
 
+/** routes processing
+ * 
+ */
 app.get('/', (req, res) => {
-    res.status(200).send('{"name":"restful blog", "version":"1.0"}'+'\n'+
+    res.status(200).send("\n\n"+'{"name":"restful blog", "version":"1.0"}'+'\n'+
         stringify(store, {indent: '  ', singleQuotes: false})
     );
 });
@@ -59,7 +67,6 @@ app.post('/posts/:postid/comments', comments.add);
 app.put('/posts/:postid/comments/:commentid', posts.update);
 app.delete('/posts/:postid/comments/:commentid/',posts.remove);
 
-*/
 
 /*** */
 
@@ -68,3 +75,5 @@ console.log('we are now listening....');
 app.listen(3000);
 
 /** end of file */
+
+//'{"name":"glenn","url":"https://glw.glw.glw","text":"this is the post","comments":{{"text":"comment1"},{"text":'comment2"}}}'
