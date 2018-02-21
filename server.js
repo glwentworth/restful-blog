@@ -57,7 +57,7 @@ app.get('/', (req, res) => {
 
 /* our routes
 */
-app.get('/posts', posts.get);
+app.get('/posts/', posts.get);
 app.post('/posts', posts.add);
 app.put('/posts/:postid/', posts.update);
 app.delete('/posts/:postid/',posts.remove);
