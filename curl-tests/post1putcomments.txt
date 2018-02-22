@@ -1,0 +1,4 @@
+#!bash
+
+ curl -H "Content-Type: application/json" -X PUT -d '[{"text":"update comment4"},{"text":"update comment3"}]'  "http://localhost:3000/posts/1/comments"
+ 

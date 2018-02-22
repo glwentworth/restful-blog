@@ -45,6 +45,10 @@ app.use(errorhandler());
  * 
  */
 app.set('store', store);
+app.set('OK',"\nOk\n");
+app.set('OB', "Out of bounds");
+app.set('UP', "Updated");
+app.set('DL', "Deleted");
 
 /** routes processing
  * 
@@ -64,8 +68,8 @@ app.delete('/posts/:postid/',posts.remove);
 
 app.get('/posts/:postid/comments', comments.get);
 app.post('/posts/:postid/comments', comments.add);
-app.put('/posts/:postid/comments/:commentid', posts.update);
-app.delete('/posts/:postid/comments/:commentid/',posts.remove);
+app.put('/posts/:postid/comments/:commentid', comments.update);
+app.delete('/posts/:postid/comments/:commentid/',comments.remove);
 
 
 /*** */

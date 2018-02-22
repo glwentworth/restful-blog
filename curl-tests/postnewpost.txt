@@ -1,0 +1,3 @@
+#!bash
+
+curl -H "Content-Type: application/json" -X POST -d '{"name":"glenn","url":"https://glw.glw.glw","text":"this is the post","comments":[{"text":"comment1"},{"text":"comment2"}]}'  "http://localhost:3000/posts"
